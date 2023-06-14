@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class=" content-section">
+    <form action="" method="POST">
+        {{ form.csrf_token }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Login</legend>
+            
+            <div class="form-group">
+                {{ form.email.label(class="form-control-label") }}
+                {% if form.email.errors %}
+
+                {{ form.email(class="form-control is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.email.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.email(class="form-control") }}
+
+                {% endif %}
+
+            </div>
+            <div class="form-group">
+                {{ form.Password.label(class="form-control-label") }}
+                {% if form.Password.errors %}
+
+                {{ form.Password(class="form-control is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.Password.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.Password(class="form-control") }}
+
+                {% endif %}
+
+            </div>
+           <div class="form-check">
+                {{ form.remember(class="form-check-input") }}
+                {{ form.remember.label(class="form-check-label") }}
+           </div>
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-dark") }}
+        </div>
+        <small class="text-muted ml-2">
+            <a href="#" class="link-dark">Forgot Password?</a>
+        </small>
+    </form>
+</div>
+<div class="border-top pt-3">
+    <small class="text-muted">
+        Need An Account? <a href="{{ url_for('users.register') }}" class="link-dark ml2-2">Sign Up Now!</a>
+    </small>
+</div>
+{% endblock %}

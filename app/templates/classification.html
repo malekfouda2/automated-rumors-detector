@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+{% for classification in classifications %}
+
+<p>{{ classification.classifierResult }}</p>
+{% endfor %}
+
+{% for source in sources %}
+<p>Source Username: {{ source.sourceUsername }}</p>
+<p>Is Verified: {{ source.sourceVerified }}</p>
+<p>Source Followers: {{ source.sourceFollowers }}</p>
+{% endfor %}
+
+{% for credible in credibles %}
+<p>Rumor: {{ credible.percentr }}</p>
+<p>Non-Rumor: {{ credible.percentn }}</p>
+{% endfor %}
+
+{% endblock content %}

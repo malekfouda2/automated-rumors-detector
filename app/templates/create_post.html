@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class=" content-section">
+    <form action="" method="POST">
+        {{ form.csrf_token }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Detect A Rumor</legend>
+            
+            
+            <div class="form-group">
+                {{ form.content.label(class="form-control-label") }}
+                {% if form.content.errors %}
+
+                {{ form.content(class="form-control is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.content.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.content(class="form-control") }}
+
+                {% endif %}
+
+            </div>
+          
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-dark") }}
+        </div>
+        
+    </form>
+    {% if preds== '' %}
+    <h4 style="text-align: center;">Waiting for input...</h4>
+    {% else %}
+    <hr>
+    <div>
+         <h4 class="container" style="text-align: center;">Source Username: {{ one }}</h4>
+    </div>
+    <hr>
+    <div class"container">
+        <h4 style="text-align: center;">Source Verified:{{ two }}</h4>
+    </div>
+    <hr>
+    <div class="container">
+        <h4 style="text-align: center;">Source Followers: {{ three }}</h4>
+    </div>
+    <hr>
+    <div class="container">
+         <h4 style="text-align: center;">{{ evalu }}</h4>
+     </div>
+    <div class="jumbotron">
+    <h4 style="text-align:center;"><b> Here are the credible sources that verifies the Classification: </b></h4>
+    <br>
+    {% endif %}
+    
+
+    {% for i in range(src|length) %}
+    
+    <li>{{ src[i] }}</li>
+    <li><a href="{{ urll[i] }}">{{ urll[i] }}</a></li>
+        {% endfor %}
+    </div>
+
+
+
+</div>
+{% endblock content %}
